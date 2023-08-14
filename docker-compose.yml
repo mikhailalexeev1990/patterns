@@ -34,8 +34,7 @@ services:
       JWT_PASSPHRASE: "jwt-passphrase-patterns"
       # xdebug
       XDEBUG_IDEKEY: patterns
-#    command: [ "composer init-local && /usr/sbin/php-fpm8.1" ]
-#    command: [ "/usr/sbin/php-fpm8.1" ]
+#    command: [ "composer install && php-fpm" ]
     command: [ "php-fpm" ]
     depends_on:
       database:
