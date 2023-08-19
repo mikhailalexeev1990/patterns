@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use OpenApi\Attributes as OA;
 
 #[Route(stateless: true)]
-class StatusController
+class StatusController extends AbstractController
 {
     #[OA\Get(
         path: '/healthcheck',
@@ -27,9 +28,9 @@ class StatusController
             ),
         ]
     )]
-    #[Route('/healthcheck', name: 'healthcheck', methods: [Request::METHOD_GET])]
+    #[Route(path: '/healthcheck', name: 'healthcheck', methods: [Request::METHOD_GET])]
     public function healthcheck(): JsonResponse
     {
-        return new JsonResponse(['status' => 'ok']);
+        return $this->json(['status' => 'ok']);
     }
 }
