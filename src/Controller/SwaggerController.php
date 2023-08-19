@@ -25,6 +25,7 @@ use Symfony\Component\Routing\Annotation\Route;
     scheme: 'bearer',
 )]
 #[OA\Response(response: 'response_200', description: 'OK')]
+#[OA\Response(response: 'response_204', description: 'No Content')]
 #[OA\Response(response: 'response_404', description: 'Not Found')]
 class SwaggerController extends AbstractController
 {
