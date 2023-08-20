@@ -43,8 +43,8 @@ class StructuralController extends AbstractController
             ])
         ]);
 
-        $chain->display();
-
-        return $this->json(null, Response::HTTP_NO_CONTENT);
+        return $this->json([
+            'Show composite elements' => $chain->display(),
+        ]);
     }
 }

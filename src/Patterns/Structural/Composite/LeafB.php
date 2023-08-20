@@ -4,8 +4,8 @@ namespace App\Patterns\Structural\Composite;
 
 class LeafB implements InterfaceComposite
 {
-    public function display(): void
+    public function display(): string
     {
-        echo 'Leaf B';
+        return 'Leaf B' . PHP_EOL;
     }
 }

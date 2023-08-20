@@ -4,5 +4,5 @@ namespace App\Patterns\Structural\Composite;
 
 interface InterfaceComposite
 {
-    public function display(): void;
+    public function display(): string;
 }

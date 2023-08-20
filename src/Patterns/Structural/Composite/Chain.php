@@ -11,12 +11,14 @@ readonly class Chain implements InterfaceComposite
     {
     }
 
-    public function display(): void
+    public function display(): string
     {
-        echo 'Chain';
+        $displayItems = '';
 
         foreach ($this->items as $item) {
-            $item->display();
+            $displayItems .= $item->display();
         }
+
+        return 'Chain of [' . $displayItems . ']' . PHP_EOL;
     }
 }
