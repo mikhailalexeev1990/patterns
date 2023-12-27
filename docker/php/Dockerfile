@@ -1,5 +1,5 @@
 # PHP
-FROM arm64v8/php:8.2.8-fpm-alpine AS php
+FROM arm64v8/php:8.3.0-fpm-alpine AS php
 WORKDIR /var/www/app
 RUN set -eux \
     && apk add --no-cache --virtual .pgsql-deps postgresql-dev \
@@ -20,31 +20,9 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 RUN set -eux \
     && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && apk add --update linux-headers \
-    && pecl install xdebug-3.2.2 \
+    && pecl install xdebug-3.3.1 \
     && docker-php-ext-enable xdebug \
     && apk del -f .build-deps
 
 # LOCAL STAGE
 FROM xdebug AS app-local
-
-#RUN phpenmod ctype \
-#             curl \
-#             dom \
-#             gd \
-#             iconv \
-#             intl \
-#             mbstring \
-#             mysqlnd \
-#             phar \
-#             pdo \
-#             pdo_mysql \
-#             simplexml \
-#             tokenizer \
-#             xml \
-#             xmlwriter \
-#             xmlreader \
-#             pgsql \
-#             pdo_pgsql \
-#             fileinfo \
-#             zip \
-#             opcache
